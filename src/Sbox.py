@@ -17,10 +17,8 @@ AES_Sbox = (
     0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16,
     )
 
-def Sbox(b:bytes):
-    if len(b) != 1:
-        raise ValueError(f'len(b) should be 1, but was {len(b)}')
-    return AES_Sbox[ord(b)]
+def Sbox(b:int):
+    return AES_Sbox[b]
 
 ####
 #Inverse Sbox
@@ -44,8 +42,6 @@ AES_inv_Sbox = (
 )
 
 
-def inv_Sbox(b:bytes):
-    if len(b) != 1:
-        raise ValueError(f'len(b) should be 1, but was {len(b)}')
-    return AES_inv_Sbox[ord(b)]
+def inv_Sbox(b:int):
+    return AES_inv_Sbox[b]
 

@@ -1,3 +1,5 @@
+import sys
+sys.path.append('..')
 from constants import BLOCK_SIZE
 
 #XORs two bytes objects of any size together, if they have different lengths the additional bytes are ignored
