@@ -36,14 +36,10 @@ def encrypt(plaintext:bytes, key:bytes):
     working_text = add_round_key(working_text, extended_key[0:4])
 
     for round_num in range(1, NUMBER_OF_ROUNDS + 1):
-        #print(f'After add_round_key{working_text}')
         working_text = sub_bytes(working_text)
-        #print(f'After sub_bytes{working_text}')
         working_text = shift_rows(working_text)
-        #print(f'After shift rows{working_text}')
         if round_num != 10:
             working_text = mix_columns(working_text)
-            #print(f'After mix columns{working_text}')
         working_text = add_round_key(working_text, extended_key[round_num*4:round_num*4+4])
 
     return bytes([item for sublist in working_text for item in sublist])
@@ -52,7 +48,7 @@ def encrypt(plaintext:bytes, key:bytes):
 
 
 plain = b'\x00\x00\x01\x01\x03\x03\x07\x07\x0f\x0f\x1f\x1f\x3f\x3f\x7f\x7f'
-key = b'\x01'*16  # Replace 'your_key' with your AES key
+key = b'\x01'*16
 
 
 res = encrypt(plain,key)
