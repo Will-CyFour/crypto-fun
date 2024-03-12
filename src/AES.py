@@ -28,12 +28,10 @@ def add_round_key(text, round_key):
 
 
 def encrypt(plaintext:bytes, key:bytes):
-
     extended_key = key_expansion(key)
     working_text = list(plaintext) #converts bytes to list of ints
     working_text = [working_text[i:i+4] for i in range(0, len(working_text), 4)] #split into 4 lists
     working_text = add_round_key(working_text, extended_key[0:4])
-
     for round_num in range(1, NUMBER_OF_ROUNDS + 1):
         working_text = sub_bytes(working_text)
         working_text = shift_rows(working_text)
@@ -43,14 +41,4 @@ def encrypt(plaintext:bytes, key:bytes):
 
     return bytes([item for sublist in working_text for item in sublist])
 
-
-
-
-plain = b'\x00'*16
-key = plain
-
-
-res = encrypt(plain,key)
-print(res)
-print(' '.join(['{:02x}'.format(byte) for byte in res]))
 

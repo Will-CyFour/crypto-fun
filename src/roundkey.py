@@ -7,8 +7,9 @@ ROUND_CONSTANTS = [ 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36]
 def xor_words(word1, word2):
     return [a ^ b for a, b in zip(word1, word2)]
 
+# Take a list of 4 ints and perform the g function on them
 def g_function(word:list, round_num:int):
-    """Take a list of 4 ints and perform the g function on them"""
+
     new_word = word.copy()
     new_word = new_word[1:] + new_word[:1]
     for i in range(len(new_word)):
@@ -33,10 +34,6 @@ def key_expansion(key:bytes):
 
 
 
-list_of_lists = key_expansion(b'\x00'*16)
-for inner_list in list_of_lists:
-    hex_list = ' '.join(['{:02X}'.format(num) for num in inner_list])
-    print(hex_list)
 
 
 
