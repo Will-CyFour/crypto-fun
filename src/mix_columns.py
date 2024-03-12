@@ -32,3 +32,4 @@ def multiply(a, b):
             a ^= 0x11B  # This is the irreducible polynomial for AES
         b >>= 1
     return result
+

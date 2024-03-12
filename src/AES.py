@@ -10,7 +10,6 @@ def sub_bytes(text):
     return text
 
 
-
 def shift_rows(text):
     transposed_text = transpose(text)
     for i in range(1,4):
@@ -47,9 +46,11 @@ def encrypt(plaintext:bytes, key:bytes):
 
 
 
-plain = b'\x00\x00\x01\x01\x03\x03\x07\x07\x0f\x0f\x1f\x1f\x3f\x3f\x7f\x7f'
-key = b'\x01'*16
+plain = b'\x00'*16
+key = plain
 
 
 res = encrypt(plain,key)
+print(res)
 print(' '.join(['{:02x}'.format(byte) for byte in res]))
+
